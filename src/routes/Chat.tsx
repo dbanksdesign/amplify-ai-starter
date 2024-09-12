@@ -27,23 +27,23 @@ export const Chat = () => {
 
         // Response components allow the chatbot to
         // render custom React components in the response.
-        // responseComponents={{
-        //   Weather: {
-        //     description: "Used to display the weather",
-        //     component: (props) => {
-        //       return (
-        //         <Flex direction="row" color="font.tertiary" alignItems="center">
-        //           <Text fontWeight="light" fontSize="large">
-        //             {props.value}
-        //           </Text>
-        //         </Flex>
-        //       );
-        //     },
-        //     props: {
-        //       value: { type: "string" },
-        //     },
-        //   },
-        // }}
+        responseComponents={{
+          Weather: {
+            description: "Used to display the weather",
+            component: (props) => {
+              return (
+                <Flex direction="row" color="font.tertiary" alignItems="center">
+                  <Text fontWeight="light" fontSize="large">
+                    {props.value}
+                  </Text>
+                </Flex>
+              );
+            },
+            props: {
+              value: { type: "string" },
+            },
+          },
+        }}
       />
     </View>
   );
