@@ -1,7 +1,6 @@
 import * as React from "react";
 import { Link, Outlet } from "react-router-dom";
 import { View, Button, Flex, ScrollView, Text } from "@aws-amplify/ui-react";
-import { client } from "../client";
 import { CreateChat } from "../components/CreateChat";
 import {
   ConversationsContext,
@@ -11,18 +10,6 @@ import {
 export const Sidebar = () => {
   const { conversations, deleteConversation } =
     React.useContext(ConversationsContext);
-
-  // const handleUpdate = async ({ id }: { id: string }) => {
-  //   client.conversations.chat
-  //     .update({
-  //       id,
-  //       name: "New Name",
-  //     })
-  //     .then((res) => {
-  //       console.log(res);
-  //       //update local state
-  //     });
-  // };
 
   return (
     <Flex direction="column" width="500px" height="100%">

@@ -16,7 +16,7 @@ import { useAIGeneration } from "../client";
 
 export function RecipeGenerator() {
   const [description, setDescription] = React.useState("");
-  const [{ data, isLoading, hasError, message, ...rest }, generateRecipe] =
+  const [{ data, isLoading, hasError, ...rest }, generateRecipe] =
     useAIGeneration("generateRecipe");
 
   console.log({ rest });
@@ -43,7 +43,7 @@ export function RecipeGenerator() {
         <Loader variation="linear" />
       ) : (
         <>
-          {hasError ? <Text>{message}</Text> : null}
+          {/* {hasError ? <Text>{message}</Text> : null} */}
           <ScrollView padding="large">
             <Heading level={2}>{data?.name}</Heading>
 

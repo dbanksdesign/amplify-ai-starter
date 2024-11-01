@@ -55,7 +55,6 @@ export const Sidebar = () => {
           Log out
         </Button>
       </Flex>
-      <Link to="/chat/1234">Testing</Link>
       <NavLink
         className={({ isActive }) =>
           navLinkTheme.className({ _modifiers: { active: isActive } })
