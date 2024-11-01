@@ -1,5 +1,5 @@
 import * as React from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { Button, Flex } from "@aws-amplify/ui-react";
 import { ThemeContext } from "./ThemeProvider";
 import { LuMoon, LuSun } from "react-icons/lu";
@@ -36,7 +36,7 @@ export const Sidebar = () => {
   return (
     <Flex
       direction="column"
-      width="30rem"
+      width="20rem"
       padding="medium"
       backgroundColor="background.secondary"
     >
@@ -55,6 +55,7 @@ export const Sidebar = () => {
           Log out
         </Button>
       </Flex>
+      <Link to="/chat/1234">Testing</Link>
       <NavLink
         className={({ isActive }) =>
           navLinkTheme.className({ _modifiers: { active: isActive } })
@@ -71,6 +72,9 @@ export const Sidebar = () => {
       >
         Recipe generator
       </NavLink>
+      <Link to="story-generator" state={{ story: "cats", title: "aristocats" }}>
+        Test
+      </Link>
     </Flex>
   );
 };

@@ -16,8 +16,10 @@ import { useAIGeneration } from "../client";
 
 export function RecipeGenerator() {
   const [description, setDescription] = React.useState("");
-  const [{ data, isLoading }, generateRecipe] =
+  const [{ data, isLoading, hasError, message, ...rest }, generateRecipe] =
     useAIGeneration("generateRecipe");
+
+  console.log({ rest });
 
   const handleClick = async () => {
     generateRecipe({ description });
@@ -40,22 +42,23 @@ export function RecipeGenerator() {
       {isLoading ? (
         <Loader variation="linear" />
       ) : (
-        // <Card variation="outlined">
-        <ScrollView padding="large">
-          <Heading level={2}>{data?.name}</Heading>
+        <>
+          {hasError ? <Text>{message}</Text> : null}
+          <ScrollView padding="large">
+            <Heading level={2}>{data?.name}</Heading>
 
-          <View as="ul">
-            {data?.ingredients?.map((ingredient) => (
-              <Text as="li" key={ingredient}>
-                {ingredient}
-              </Text>
-            ))}
-          </View>
-          <View color="font.primary">
-            <Markdown>{data?.instructions}</Markdown>
-          </View>
-        </ScrollView>
-        // </Card>
+            <View as="ul">
+              {data?.ingredients?.map((ingredient) => (
+                <Text as="li" key={ingredient}>
+                  {ingredient}
+                </Text>
+              ))}
+            </View>
+            <View color="font.primary">
+              <Markdown>{data?.instructions}</Markdown>
+            </View>
+          </ScrollView>
+        </>
       )}
     </Flex>
   );

@@ -5,6 +5,7 @@ import {
   defineFunction,
   secret,
 } from "@aws-amplify/backend";
+// import { customConversationHandlerFunction } from "../functions/conversation-handler/resource";
 
 export const getWeather = defineFunction({
   name: "getWeather",
@@ -29,20 +30,37 @@ const schema = a.schema({
 
   chat: a.conversation({
     aiModel: a.ai.model("Claude 3.5 Sonnet"),
-    systemPrompt: "You are a helpful assistant",
+    systemPrompt: `
+    You are a helpful assistant.
+    `,
     tools: [
       {
         query: a.ref("getWeather"),
         description: "Provides the current weather for a given city.",
       },
     ],
+    // handler: customConversationHandlerFunction,
   }),
+
+  chatNamer: a
+    .generation({
+      aiModel: a.ai.model("Claude 3 Haiku"),
+      systemPrompt: `You are a helpful assistant that writes descriptive names for conversations. Names should be 2-10 words long`,
+    })
+    .arguments({
+      content: a.string(),
+    })
+    .returns(
+      a.customType({
+        name: a.string(),
+      })
+    )
+    .authorization((allow) => [allow.authenticated()]),
 
   generateRecipe: a
     .generation({
       aiModel: a.ai.model("Claude 3 Haiku"),
-      systemPrompt:
-        "You are a helpful assistant that generates recipes. Do not return <UNKNOWN> for a property's value.",
+      systemPrompt: "You are a helpful assistant that generates recipes.",
     })
     .arguments({
       description: a.string(),

@@ -12,6 +12,8 @@ import { ThemeProvider } from "./components/ThemeProvider.tsx";
 import Root from "./routes/Root.tsx";
 import { Chat } from "./routes/Chat.tsx";
 import { RecipeGenerator } from "./routes/RecipeGenerator.tsx";
+import { ChatIdPage } from "./routes/ChatId.tsx";
+import { ChatIndexPage } from "./routes/ChatIndex.tsx";
 
 const router = createBrowserRouter([
   {
@@ -21,6 +23,16 @@ const router = createBrowserRouter([
       {
         path: "chat",
         element: <Chat />,
+        children: [
+          {
+            path: ":chatId",
+            element: <ChatIdPage />,
+          },
+          {
+            index: true,
+            element: <ChatIndexPage />,
+          },
+        ],
       },
       {
         path: "recipe-generator",
