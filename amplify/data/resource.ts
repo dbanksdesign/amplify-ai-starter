@@ -39,7 +39,6 @@ const schema = a.schema({
         description: "Provides the current weather for a given city.",
       },
     ],
-    // handler: customConversationHandlerFunction,
   }),
 
   chatNamer: a
