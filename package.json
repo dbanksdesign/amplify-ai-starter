@@ -40,7 +40,6 @@
     "vite": "^5.4.1"
   },
   "overrides": {
-    "@aws-amplify/data-schema": "ai-streaming",
-    "@aws-amplify/appsync-modelgen-plugin": "2.15.0"
+    "@aws-amplify/data-schema": "ai-streaming"
   }
 }
