@@ -10,8 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@aws-amplify/ui-react": "latest",
-    "@aws-amplify/ui-react-ai": "ai-streaming",
+    "@aws-amplify/ui-react": "^6.6.0",
+    "@aws-amplify/ui-react-ai": "^1.0.0",
     "aws-amplify": "^6.8.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
